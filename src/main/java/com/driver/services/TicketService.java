@@ -11,8 +11,6 @@ import com.driver.repository.TrainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class TicketService {
@@ -64,8 +62,6 @@ public class TicketService {
        }
       
        Ticket ticket=new Ticket();
-       
-
        String[] routeArr=route.split(",");
        int st = -1;
         for(int i=0; i<routeArr.length; i++){
@@ -96,7 +92,7 @@ public class TicketService {
        Ticket savedTicket=ticketRepository.save(ticket);
 
        train.getBookedTickets().add(ticket);
-       Train savedTrain=trainRepository.save(train);
+       trainRepository.save(train);
        return savedTicket.getTicketId();
 
     }
